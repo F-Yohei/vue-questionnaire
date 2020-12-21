@@ -1,4 +1,5 @@
 <template>
+<div>
     <div class="questionnaire-box">
       <div class="questionnaire-box-header">
         <span>STEP1</span>
@@ -17,15 +18,18 @@
         <p>生年月日</p>
 
         <select id="birthday-year">
-          <option v-for="nengo in years" :key="nengo.year" :value="nengo.label">{{ nengo.label }}</option>
+          <option v-for="yearnumber in years" :key="yearnumber.year">{{ yearnumber.label }}</option>
         </select>年
 
         <select id="birthday-month"></select>月
 
         <select id="birthday-day"></select>日
-
       </form>
     </div>
+
+      <button id="next-btn" class="next-btn">次へ進む</button>
+</div>
+
 </template>
 
 <script>
@@ -37,36 +41,22 @@ export default {
   },
   methods: {
     createOption() {
-      const years = [];
+      this.years = [];
       for(let y = 2020; y > 1929; y--) {
         if(y > 2018) {
-          years.push({"label": `${y} (令和${y-2018}年)`});
+          this.years.push({"year": y, "label": `${y} (令和${y-2018}年)`});
         } else if (y > 1988) {
-          years.push({"label": `${y} (平成${y-1988}年)`});
+          this.years.push({"year": y, "label": `${y} (平成${y-1988}年)`});
         } else if (y > 1925) {
-          years.push( {"label": `${y} (昭和${y-1925}年)`} );
-        } else if (y > 1911) {
-          years.push( {"label": `${y} (大正${y-1911}年)`} );
+          this.years.push( {"year": y, "label": `${y} (昭和${y-1925}年)`} );
         }
       }
-      console.log(years);
-      return years;
+      return this.years;
     }
   },
   mounted:function() {
-    // this.createOption();
-    // for(let i = 1930, j = 5; i <= 1989; i++,j++) {
-    //   const userBirthdayYear = document.getElementById('birthday-year');
-    //   const op = document.createElement('option');
-    //   op.textContent = `${i}年（昭和${j}）` ;
-    //   userBirthdayYear.appendChild(op);
-    // }
-    // for(let i = 1990, j = 1; i <= 2020; i++,j++) {
-    //   const userBirthdayYear = document.getElementById('birthday-year');
-    //   const op = document.createElement('option');
-    //   op.textContent = `${i}年（平成${j}）` ;
-    //   userBirthdayYear.appendChild(op);
-    // }
+    this.createOption();
+
     for(let i = 1; i <= 12; i++) {
       const userBirthdayMonth = document.getElementById('birthday-month');
       const op = document.createElement('option');
@@ -110,7 +100,7 @@ export default {
 }
 
 .questionnaire-box-header > h4 {
-  width:50%;
+  width:45%;
   margin:0 auto;
   padding:10px;
   color:#565F5F;
@@ -184,6 +174,33 @@ export default {
   width:15%;
   padding:8px;
   margin:0 10px 0 10px;
+}
+
+.next-btn {
+  position:relative;
+  display:block;
+  margin:0 auto;
+  text-align: center;
+  padding:10px;
+  width:150px;
+  color:#fff;
+  background-color:#0FE7A2;
+  border:none;
+  border-radius:3px;
+  letter-spacing:1px;
+}
+
+.next-btn::after {
+   content: "";
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    margin-top: -3.5px;
+    height: 7px;
+    width: 7px;
+    position: absolute;
+    top: 19px;
+    left: 125px;
+    transform: rotate(45deg);
 }
 
 </style>
