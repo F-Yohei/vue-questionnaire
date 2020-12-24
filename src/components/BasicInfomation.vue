@@ -8,7 +8,7 @@
 
       <form class="gender-selection-box">
         <p>性別</p>
-        <input type="radio" name="gender" value="男" id="men" v-on:click="createBirthdayYear">
+        <input type="radio" name="gender" value="男" id="men">
         <label for="men">男</label>
         <input type="radio" name="gender" value="女" id="women">
         <label for="women">女</label>
@@ -31,6 +31,7 @@
 </div>
 
 </template>
+
 
 <script>
 export default {

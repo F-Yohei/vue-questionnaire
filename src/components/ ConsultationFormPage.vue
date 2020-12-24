@@ -17,7 +17,6 @@
       <button id="next-btn" class="next-btn">次へ進む</button>
     </div>
 </div>
-
 </template>
 
 <script>

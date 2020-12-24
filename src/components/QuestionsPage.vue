@@ -8,9 +8,9 @@
 
       <form class="question-box">
         <p>現在、生命保険に加入されていますか？</p>
-        <input type="radio" name="question" value="ok" id="a" v-on:click="change"/>
+        <input type="radio" name="question" value="ok" id="a" v-on:click="change" />
         <label for="a">はい</label>
-        <input type="radio" name="question" value="no" id="b" v-on:click="change"/>
+        <input type="radio" name="question" value="no" id="b" v-on:click="change" />
         <label for="b">いいえ</label>
       </form>
 
@@ -24,20 +24,21 @@
         </form>
       </transition>
 
-      <form class="question-box">
-        <p>過去５年以内に、病気やけがで、手術をうけたことまたは、継続して７日以上の入院をしたことがありますか？</p>
-        <input type="radio" name="question" value="ok" id="e" />
-        <label for="e">はい</label>
-        <input type="radio" name="question" value="no" id="f" />
-        <label for="f">いいえ</label>
-      </form>
+      <transition name="fade">
+        <form class="question-box" v-if="show">
+          <p>過去５年以内に、病気やけがで、手術をうけたことまたは、継続して７日以上の入院をしたことがありますか？</p>
+          <input type="radio" name="question" value="ok" id="e" />
+          <label for="e">はい</label>
+          <input type="radio" name="question" value="no" id="f" />
+          <label for="f">いいえ</label>
+        </form>
+      </transition>
     </div>
 
     <div class="page-transition-button">
       <button id="back-btn" class="back-btn">前へ戻る</button>
       <button id="next-btn" class="next-btn">次へ進む</button>
     </div>
-
   </div>
 </template>
 
@@ -45,26 +46,25 @@
 export default {
   data() {
     return {
-        show:false
-    };
+      show: false
+    }
   },
   methods: {
-      change:function() {
-          this.show = true;
-      }
+    change: function() {
+      this.show = true;
+    }
   }
 };
 </script>
 
 <style scoped>
-.fade-enter,
-.fade-enter {
+.fade-enter-from {
     opacity:0;
-    transform: translateY(20px);
+    transform: translateY(10px);
 }
 
 .fade-enter-active {
-    transition:0.5s;
+    transition:1s;
 }
 
 .fade-enter-to {
