@@ -1,29 +1,30 @@
 <template>
   <div id="app">
-    <!-- <BasicInfomation></BasicInfomation>
-    <QuestionsPage></QuestionsPage>
-    <ConsultationPage></ConsultationPage> -->
-    <router-view></router-view>
+    <transition name="fade-in">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
 <script>
-// import BasicInfomation from './components/BasicInfomation.vue';
-// import QuestionsPage from './components/QuestionsPage.vue';
-// import ConsultationPage from './components/ConsultationFormPage.vue';
-import router from './router';
+import router from "./router";
 
 export default {
-  name: 'App',
-  components: {
-    // BasicInfomation,
-    // QuestionsPage,
-    // ConsultationPage
-  },
+  name: "App",
   router
-}
+};
 </script>
 
-<style>
+<style scoped>
+.fade-in-enter-from {
+  opacity: 0;
+}
 
+.fade-in-enter-active {
+  transition: 1s;
+}
+
+.fade-in-enter-to {
+  opacity: 1;
+}
 </style>

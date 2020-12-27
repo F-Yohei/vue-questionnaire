@@ -36,8 +36,8 @@
     </div>
 
     <div class="page-transition-button">
-      <button id="back-btn" class="back-btn">前へ戻る</button>
-      <button id="next-btn" class="next-btn">次へ進む</button>
+      <router-link to="/" tag="button" id="back-btn" class="back-btn">前へ戻る</router-link>
+      <router-link to="/consultation" tag="button" id="next-btn" class="next-btn">次へ進む</router-link>
     </div>
   </div>
 </template>
@@ -62,18 +62,6 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-from {
-    opacity:0;
-    transform: translateY(10px);
-}
-
-.fade-enter-active {
-    transition:1s;
-}
-
-.fade-enter-to {
-    transform:translateY(0);
-}
 
 .questionnaire-box {
   width: 50%;
@@ -121,11 +109,25 @@ export default {
   color: #4eaee0;
 }
 
+.fade-enter-from {
+    opacity:0;
+    transform: translateY(2px);
+}
+
+.fade-enter-active {
+    transition:1s;
+}
+
+.fade-enter-to {
+    transform:translateY(0);
+}
+
 .next-btn,
 .back-btn {
   position: relative;
   display: block;
   text-align: center;
+  text-decoration:none;
   margin-right: 25px;
   padding: 10px;
   width: 150px;
