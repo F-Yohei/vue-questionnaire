@@ -2,50 +2,41 @@
   <div>
     <div class="questionnaire-box">
       <div class="questionnaire-box-header">
-        <span>STEP1</span>
-        <h4>お客様の情報を入力してください</h4>
+        <span>STEP4</span>
+        <h4>以下の内容をご確認ください</h4>
       </div>
 
       <form class="gender-selection-box">
         <p>性別</p>
-        <input type="radio" name="gender" value="男" id="men" />
-        <label for="men">男</label>
-        <input type="radio" name="gender" value="女" id="women" />
-        <label for="women">女</label>
       </form>
 
       <form class="birthday-box">
         <p>生年月日</p>
-        <select id="birthday-year">
-          <option v-for="yearnumber in definition.years" :key="yearnumber.year">{{ yearnumber.label }}</option>
-        </select>年
-        <select id="birthday-month">
-          <option v-for="monthnumber in definition.months" :key="monthnumber.id">{{ monthnumber }}</option>
-        </select>月
-        <select id="birthday-day">
-          <option v-for="daynumber in definition.days" :key="daynumber.id">{{ daynumber }}</option>
-        </select>日
       </form>
 
+      <form class="question-box">
+        <p>現在、生命保険に加入されていますか？</p>
+      </form>
+
+      <form class="question-box">
+        <p>現在、入院中ですか。または、最近3ヶ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？</p>
+      </form>
+
+      <form class="question-box">
+        <p>過去５年以内に、病気やけがで、手術をうけたことまたは、継続して７日以上の入院をしたことがありますか？</p>
+      </form>
+
+      <form class="consultation-content-input-form">
+        <p>ご相談内容</p>
+      </form>
     </div>
 
-      <router-link to="/questions" tag="button" id="next-btn" class="next-btn">次へ進む</router-link>
+<div class="page-transition-button">
+    <router-link to="/consultation" tag="button" id="back-btn" class="back-btn">前へ戻る</router-link>
+    <router-link to="/questions" tag="button" id="back-btn" class="back-btn">送信</router-link>
+</div>
   </div>
 </template>
-
-
-<script>
-import definition from './definition';
-
-export default {
-  data() {
-    return {
-      definition
-    };
-  }
-};
-</script>
-
 
 <style scoped>
 .questionnaire-box {
@@ -54,10 +45,12 @@ export default {
   border: 1px solid #00ffc0;
   border-radius: 3px;
 }
+
 .questionnaire-box-header {
   display: flex;
   background-color: rgba(0, 255, 186, 0.3);
 }
+
 .questionnaire-box-header > span {
   width: 11%;
   height: 22px;
@@ -68,6 +61,7 @@ export default {
   background-color: #1798da;
   border-radius: 3px;
 }
+
 .questionnaire-box-header > h4 {
   width: 45%;
   margin: 0 auto;
@@ -75,15 +69,18 @@ export default {
   color: #565f5f;
   font-weight: normal;
 }
+
 .gender-selection-box {
   padding: 0 10px;
 }
+
 .gender-selection-box > p {
   display: flex;
   align-items: center;
   font-size: 14px;
   color: #4eaee0;
 }
+
 .gender-selection-box > p::before,
 .gender-selection-box > p::after {
   content: "";
@@ -91,21 +88,26 @@ export default {
   height: 1px;
   background-color: #4eaee0;
 }
+
 .gender-selection-box > p::before {
   margin-right: 4px;
 }
+
 .gender-selection-box > p::after {
   margin-left: 4px;
 }
+
 .birthday-box {
   padding: 0 10px 25px 10px;
 }
+
 .birthday-box > p {
   display: flex;
   align-items: center;
   font-size: 14px;
   color: #4eaee0;
 }
+
 .birthday-box > p::before,
 .birthday-box > p::after {
   content: "";
@@ -113,32 +115,44 @@ export default {
   height: 1px;
   background-color: #4eaee0;
 }
+
 .birthday-box > p::before {
   margin-right: 4px;
 }
+
 .birthday-box > p::after {
   margin-left: 4px;
 }
-.birthday-box > select > option {
-  background-color: #00ffc0;
+
+.question-box {
+  padding: 0 10px;
 }
-.birthday-box > select:nth-child(2) {
-  width: 25%;
-  padding: 8px;
-  margin-right: 10px;
+
+.question-box > p {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #4eaee0;
 }
-.birthday-box > select:nth-child(3),
-.birthday-box > select:nth-child(4) {
-  width: 15%;
-  padding: 8px;
-  margin: 0 10px 0 10px;
+
+.consultation-content-input-form > p {
+  display:flex;
+  align-items: center;
+  font-size:14px;
+  color:#4EAEE0;
 }
-.next-btn {
+
+.page-transition-button {
+  display: flex;
+  justify-content: center;
+}
+
+.back-btn {
   position: relative;
   display: block;
-  margin: 0 auto;
   text-align: center;
-  text-decoration: none;
+  text-decoration:none;
+  margin-right: 25px;
   padding: 10px;
   width: 150px;
   color: #fff;
@@ -147,7 +161,8 @@ export default {
   border-radius: 3px;
   letter-spacing: 1px;
 }
-.next-btn::after {
+
+.back-btn::after {
   content: "";
   border-top: 2px solid #fff;
   border-right: 2px solid #fff;
