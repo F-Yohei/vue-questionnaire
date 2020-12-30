@@ -17,32 +17,34 @@
       <form class="birthday-box">
         <p>生年月日</p>
         <select id="birthday-year">
-          <option v-for="yearnumber in definition.years" :key="yearnumber.year">{{ yearnumber.label }}</option>
+          <option v-for="yearnumber in createBirthdayOption.years" :key="yearnumber.year">{{ yearnumber.label }}</option>
         </select>年
+
         <select id="birthday-month">
-          <option v-for="monthnumber in definition.months" :key="monthnumber.id">{{ monthnumber }}</option>
+          <option v-for="monthnumber in createBirthdayOption.months" :key="monthnumber.id">{{ monthnumber }}</option>
         </select>月
+
         <select id="birthday-day">
-          <option v-for="daynumber in definition.days" :key="daynumber.id">{{ daynumber }}</option>
+          <option v-for="daynumber in createBirthdayOption.days" :key="daynumber.id">{{ daynumber }}</option>
         </select>日
       </form>
-
     </div>
 
       <router-link to="/questions" tag="button" id="next-btn" class="next-btn">次へ進む</router-link>
+
   </div>
 </template>
 
 
 <script>
-import definition from './definition';
+import createBirthdayOption from '../definition';
 
 export default {
   data() {
     return {
-      definition
+      createBirthdayOption
     };
-  }
+  },
 };
 </script>
 

@@ -98,7 +98,7 @@
 }
 
 .birthday-box {
-  padding: 0 10px 25px 10px;
+  padding: 0 10px 0px 10px;
 }
 
 .birthday-box > p {
@@ -133,6 +133,10 @@
   align-items: center;
   font-size: 14px;
   color: #4eaee0;
+}
+
+.consultation-content-input-form {
+  padding: 0 10px;
 }
 
 .consultation-content-input-form > p {
