@@ -1,6 +1,6 @@
-const years = [];
-const months = [];
-const days = [];
+export const years = [];
+export const months = [];
+export const days = [];
 
 function createYearsOption() {
     for (let y = 2020; y > 1929; y--) {
@@ -29,5 +29,3 @@ function createDaysOption() {
 createYearsOption();
 createMounthsOption();
 createDaysOption();
-
-export default { years, months, days }
