@@ -8,7 +8,7 @@
 
       <form class="consultation-content-input-form">
         <p>ご相談内容</p>
-        <textarea rows="20" cols="95"></textarea>
+        <textarea rows="20" cols="80" @input="updateConsultationContent"></textarea>
       </form>
     </div>
 
@@ -25,6 +25,11 @@ export default {
     return {
 
     }
+  },
+  methods: {
+    updateConsultationContent(e) {
+      this.$store.dispatch('updateConsultationContent', e.target.value)
+    }
   }
 }
 
@@ -33,7 +38,7 @@ export default {
 
 <style scoped>
 .questionnaire-box {
-  width:50%;
+  width:43%;
   margin:50px auto;
   border:1px solid #00FFC0;
   border-radius:3px;

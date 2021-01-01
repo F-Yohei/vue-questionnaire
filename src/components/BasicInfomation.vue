@@ -8,36 +8,34 @@
 
       <form class="gender-selection-box">
         <p>性別</p>
-        <input type="radio" name="gender" value="男" id="men" />
+        <input type="radio" name="gender" value="男" id="men" @input="updateGender"/>
         <label for="men">男</label>
-        <input type="radio" name="gender" value="女" id="women" />
+        <input type="radio" name="gender" value="女" id="women" @input="updateGender"/>
         <label for="women">女</label>
       </form>
 
       <form class="birthday-box">
         <p>生年月日</p>
-        <select id="birthday-year">
+        <select id="birthday-year" :value="year" @input="updateYear">
           <option v-for="yearnumber in years" :key="yearnumber.year">{{ yearnumber.label }}</option>
         </select>年
-
-        <select id="birthday-month">
+        <select id="birthday-month" :value="month" @input="updateMonth">
           <option v-for="monthnumber in months" :key="monthnumber.id">{{ monthnumber }}</option>
         </select>月
-
-        <select id="birthday-day">
+        <select id="birthday-day" :value="day" @input="updateDay">
           <option v-for="daynumber in days" :key="daynumber.id">{{ daynumber }}</option>
         </select>日
       </form>
     </div>
 
-      <router-link to="/questions" tag="button" id="next-btn" class="next-btn">次へ進む</router-link>
+    <router-link to="/questions" tag="button" id="next-btn" class="next-btn">次へ進む</router-link>
 
   </div>
 </template>
 
 
 <script>
-import { years,months,days } from '../definition';
+import { years, months, days } from "../definition";
 
 export default {
   data() {
@@ -47,13 +45,30 @@ export default {
       days
     };
   },
+  computed: {
+
+  },
+  methods: {
+    updateGender(e) {
+      this.$store.dispatch('updateGender', e.target.value);
+    },
+    updateYear(e) {
+      this.$store.dispatch('updateYear', e.target.value);
+    },
+    updateMonth(e) {
+      this.$store.dispatch('updateMonth', e.target.value);
+    },
+    updateDay(e) {
+      this.$store.dispatch('updateDay', e.target.value);
+    }
+  }
 };
 </script>
 
 
 <style scoped>
 .questionnaire-box {
-  width: 50%;
+  width: 43%;
   margin: 50px auto;
   border: 1px solid #00ffc0;
   border-radius: 3px;
