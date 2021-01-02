@@ -40,7 +40,7 @@
 
 <div class="page-transition-button">
     <router-link to="/consultation" tag="button" id="back-btn" class="back-btn">前へ戻る</router-link>
-    <router-link to="/questions" tag="button" id="back-btn" class="back-btn">送信</router-link>
+    <router-link to="" tag="button" id="back-btn" class="back-btn">送信</router-link>
 </div>
   </div>
 </template>
