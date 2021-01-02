@@ -8,21 +8,21 @@
 
       <form class="gender-selection-box">
         <p>性別</p>
-        <input type="radio" name="gender" value="男" id="men" @input="updateGender"/>
+        <input type="radio" name="gender" value="男" id="men" @input="updateGender($event.target.value)"/>
         <label for="men">男</label>
-        <input type="radio" name="gender" value="女" id="women" @input="updateGender"/>
+        <input type="radio" name="gender" value="女" id="women" @input="updateGender($event.target.value)"/>
         <label for="women">女</label>
       </form>
 
       <form class="birthday-box">
         <p>生年月日</p>
-        <select id="birthday-year" :value="year" @input="updateYear">
+        <select id="birthday-year" :value="year" @input="updateYear($event.target.value)">
           <option v-for="yearnumber in years" :key="yearnumber.year">{{ yearnumber.label }}</option>
         </select>年
-        <select id="birthday-month" :value="month" @input="updateMonth">
+        <select id="birthday-month" :value="month" @input="updateMonth($event.target.value)">
           <option v-for="monthnumber in months" :key="monthnumber.id">{{ monthnumber }}</option>
         </select>月
-        <select id="birthday-day" :value="day" @input="updateDay">
+        <select id="birthday-day" :value="day" @input="updateDay($event.target.value)">
           <option v-for="daynumber in days" :key="daynumber.id">{{ daynumber }}</option>
         </select>日
       </form>
@@ -35,7 +35,8 @@
 
 
 <script>
-import { years, months, days } from "../definition";
+import { years, months, days } from '../definition';
+import { mapActions } from 'vuex';
 
 export default {
   data() {
@@ -49,18 +50,7 @@ export default {
 
   },
   methods: {
-    updateGender(e) {
-      this.$store.dispatch('updateGender', e.target.value);
-    },
-    updateYear(e) {
-      this.$store.dispatch('updateYear', e.target.value);
-    },
-    updateMonth(e) {
-      this.$store.dispatch('updateMonth', e.target.value);
-    },
-    updateDay(e) {
-      this.$store.dispatch('updateDay', e.target.value);
-    }
+    ...mapActions(['updateGender','updateYear','updateMonth','updateDay'])
   }
 };
 </script>

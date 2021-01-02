@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 
 export default {
   data() {
@@ -53,30 +54,7 @@ export default {
     };
   },
   computed: {
-    gender() {
-      return this.$store.getters.gender;
-    },
-    year() {
-      return this.$store.getters.year;
-    },
-    month() {
-      return this.$store.getters.month;
-    },
-    day() {
-      return this.$store.getters.day;
-    },
-    question1() {
-      return this.$store.getters.question1;
-    },
-    question2() {
-      return this.$store.getters.question2;
-    },
-    question3() {
-      return this.$store.getters.question3;
-    },
-    consultationContent() {
-      return this.$store.getters.consultationContent;
-    }
+    ...mapGetters(['gender','year','month','day','question1','question2','question3','consultationContent'])
   }
 };
 </script>

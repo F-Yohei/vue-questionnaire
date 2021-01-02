@@ -8,7 +8,7 @@
 
       <form class="consultation-content-input-form">
         <p>ご相談内容</p>
-        <textarea rows="20" cols="80" @input="updateConsultationContent"></textarea>
+        <textarea rows="20" cols="80" @input="updateConsultationContent($event.target.value)"></textarea>
       </form>
     </div>
 
@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   data() {
     return {
@@ -27,9 +28,7 @@ export default {
     }
   },
   methods: {
-    updateConsultationContent(e) {
-      this.$store.dispatch('updateConsultationContent', e.target.value)
-    }
+    ...mapActions(['updateConsultationContent'])
   }
 }
 
