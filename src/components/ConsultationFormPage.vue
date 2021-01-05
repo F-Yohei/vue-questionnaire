@@ -8,7 +8,7 @@
 
       <form class="consultation-content-input-form">
         <p>ご相談内容</p>
-        <textarea rows="20" cols="95"></textarea>
+        <textarea rows="20" cols="80" @input="updateConsultationContent($event.target.value)"></textarea>
       </form>
     </div>
 
@@ -20,11 +20,10 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
-  data() {
-    return {
-
-    }
+  methods: {
+    ...mapActions(['updateConsultationContent'])
   }
 }
 
@@ -33,7 +32,7 @@ export default {
 
 <style scoped>
 .questionnaire-box {
-  width:50%;
+  width:43%;
   margin:50px auto;
   border:1px solid #00FFC0;
   border-radius:3px;
@@ -131,3 +130,4 @@ export default {
 }
 
 </style>
+

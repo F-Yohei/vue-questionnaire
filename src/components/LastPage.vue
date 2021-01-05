@@ -8,39 +8,56 @@
 
       <form class="gender-selection-box">
         <p>性別</p>
+        <span class="answer">{{ gender }}</span>
       </form>
 
       <form class="birthday-box">
         <p>生年月日</p>
+        <span class="answer">{{ year }}年{{ month }}月{{ day }}日</span>
       </form>
 
       <form class="question-box">
         <p>現在、生命保険に加入されていますか？</p>
+        <span class="answer">{{ question1 }}</span>
       </form>
 
       <form class="question-box">
         <p>現在、入院中ですか。または、最近3ヶ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？</p>
+        <span class="answer">{{ question2 }}</span>
+
       </form>
 
       <form class="question-box">
         <p>過去５年以内に、病気やけがで、手術をうけたことまたは、継続して７日以上の入院をしたことがありますか？</p>
+        <span class="answer">{{ question3 }}</span>
       </form>
 
       <form class="consultation-content-input-form">
         <p>ご相談内容</p>
+        <span class="answer">{{ consultationContent }}</span>
       </form>
     </div>
 
 <div class="page-transition-button">
     <router-link to="/consultation" tag="button" id="back-btn" class="back-btn">前へ戻る</router-link>
-    <router-link to="/questions" tag="button" id="back-btn" class="back-btn">送信</router-link>
+    <router-link to="" tag="button" id="back-btn" class="back-btn">送信</router-link>
 </div>
   </div>
 </template>
 
+<script>
+import { mapGetters } from 'vuex';
+
+export default {
+  computed: {
+    ...mapGetters(['gender', 'year', 'month', 'day' ,'question1' ,'question2', 'question3', 'consultationContent'])
+  }
+};
+</script>
+
 <style scoped>
 .questionnaire-box {
-  width: 50%;
+  width: 43%;
   margin: 50px auto;
   border: 1px solid #00ffc0;
   border-radius: 3px;
@@ -77,24 +94,8 @@
 .gender-selection-box > p {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #4eaee0;
-}
-
-.gender-selection-box > p::before,
-.gender-selection-box > p::after {
-  content: "";
-  width: 5px;
-  height: 1px;
-  background-color: #4eaee0;
-}
-
-.gender-selection-box > p::before {
-  margin-right: 4px;
-}
-
-.gender-selection-box > p::after {
-  margin-left: 4px;
 }
 
 .birthday-box {
@@ -104,24 +105,8 @@
 .birthday-box > p {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #4eaee0;
-}
-
-.birthday-box > p::before,
-.birthday-box > p::after {
-  content: "";
-  width: 5px;
-  height: 1px;
-  background-color: #4eaee0;
-}
-
-.birthday-box > p::before {
-  margin-right: 4px;
-}
-
-.birthday-box > p::after {
-  margin-left: 4px;
 }
 
 .question-box {
@@ -131,19 +116,25 @@
 .question-box > p {
   display: flex;
   align-items: center;
-  font-size: 14px;
+  font-size: 12px;
   color: #4eaee0;
 }
 
 .consultation-content-input-form {
   padding: 0 10px;
+  margin-bottom:15px;
 }
 
 .consultation-content-input-form > p {
   display:flex;
   align-items: center;
-  font-size:14px;
+  font-size:12px;
   color:#4EAEE0;
+}
+
+.answer {
+  font-size:12px;
+  padding-left:10px;
 }
 
 .page-transition-button {
@@ -179,3 +170,4 @@
   transform: rotate(45deg);
 }
 </style>
+

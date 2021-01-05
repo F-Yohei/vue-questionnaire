@@ -5,11 +5,11 @@ export const days = [];
 function createYearsOption() {
     for (let y = 2020; y > 1929; y--) {
         if (y > 2018) {
-            years.push({ year: y, label: `${y} (令和${y - 2018}年)` });
+            years.push({ year: y, label: `${y}` });
         } else if (y > 1988) {
-            years.push({ year: y, label: `${y} (平成${y - 1988}年)` });
+            years.push({ year: y, label: `${y}` });
         } else if (y > 1925) {
-            years.push({ year: y, label: `${y} (昭和${y - 1925}年)` });
+            years.push({ year: y, label: `${y}` });
         }
     }
 }
